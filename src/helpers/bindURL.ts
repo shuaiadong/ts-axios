@@ -59,7 +59,7 @@ function bindURL(url:string, params: any):string {
 
     if(serializedParams) {
        let hasMarkIndex = url.indexOf('#');
-       if(hasMarkIndex) {
+       if(hasMarkIndex !== -1) {
            url = url.slice(0, hasMarkIndex)
        }
        url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;

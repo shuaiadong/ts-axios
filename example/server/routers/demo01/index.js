@@ -12,10 +12,18 @@ router.get('/get', (req, res) => {
     res.json(req.query)
 })
 
-router.post('/post', (req, res) => {
-    res.json(req.query)
-})
-
+// router.post('/post', (req, res) => {
+//     console.log(req, 'req.body')
+//     res.json(req.body)
+// })
+router.post('/post', function(req, res) {
+    console.log(req.query)
+    console.log(req.body)
+    res.json({
+        body: req.body,
+        query: req.query
+    })
+  })
 router.put('/put', (req, res) => {
     res.json(req.query)
 })

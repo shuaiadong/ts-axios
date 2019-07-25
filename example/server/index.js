@@ -9,12 +9,14 @@ const webpackConfig = require('../webpack/webpack.config.js');
 const compiler = webpack(webpackConfig);
 
 const app = express();
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
 const demo01 = require('./routers/demo01/index')
 app.use('/demo01', demo01)
 
-
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(WebDevMiddleware(compiler, {
     stats: {
