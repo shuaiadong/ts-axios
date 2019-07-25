@@ -67,3 +67,13 @@ axios({
     url: `/${context}/get/#1111`,
     params: [1, null, 'a']
 })
+
+
+axios({
+    method: 'post',
+    url: `/${context}/post/#1111`,
+    params: [1, null, 'a'],
+    data: {
+        a: 1
+    }
+})
