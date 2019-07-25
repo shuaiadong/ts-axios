@@ -2,16 +2,23 @@ import { AxiosRequestConfig, AxiosPramise, AxiosResponse} from "./types";
 import {parseHeaders} from './helpers/headers'
 
 function xhr(config: AxiosRequestConfig): AxiosPramise {
-    const {url, method = 'get', data = null, headers, responseType} = config;
+    const {url, method = 'get', data = null, headers, responseType, timeout} = config;
   
     return new Promise((resolve, reject) => {
 
         const request = new XMLHttpRequest();
         
-
+        function handleResponse(response: AxiosResponse) {
+            if(request.status >= 200 && request.status <= 300) {
+                resolve(response)
+            }
+            else {
+                reject(new Error(`Request failed with status code  ${request.status}错误`))
+            }
+        }
 
         request.onreadystatechange = function () {
-            if(request.readyState !== 4) {
+            if(request.readyState !== 4 || request.status === 0) {
                 return;
             }
 
@@ -27,14 +34,25 @@ function xhr(config: AxiosRequestConfig): AxiosPramise {
                 statusText: request.statusText
             };
 
-            resolve(response);
+            handleResponse(response);
         }
 
+        request.onerror = function () {
+            reject(new Error('Network Error'))
+        }
+
+        request.ontimeout = function () {
+            reject(new Error(' timeout'))
+        }
 
         request.open(method.toUpperCase(), url, true)
     
         if (responseType) {
             request.responseType = responseType
+        }
+
+        if(timeout) {
+            request.timeout = timeout;
         }
     
         if (headers) {

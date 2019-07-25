@@ -15,8 +15,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 const demo01 = require('./routers/demo01/index')
+const error = require('./routers/error/index.js');
 app.use('/demo01', demo01)
-
+app.use('/error', error)
 
 app.use(WebDevMiddleware(compiler, {
     stats: {

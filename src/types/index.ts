@@ -13,15 +13,17 @@ export interface AxiosRequestConfig {
     params?: any
     headers?: any
     responseType?: XMLHttpRequestResponseType
+    timeout?: number
 }
 
 export interface AxiosResponse {
     headers: any
     data: any
-    status: Number
+    status: number
     statusText: string
     request: any
     config: AxiosRequestConfig
+    
 }
 
 export interface AxiosPramise extends Promise<AxiosResponse> {
