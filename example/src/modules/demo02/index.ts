@@ -75,6 +75,7 @@ axios({
     params: {
         arr: [1, null, 'a']
     },
+    responseType: 'json',
     headers: {
         // 'Content-Type': 'application/x-www-form-urlencoded'
     },

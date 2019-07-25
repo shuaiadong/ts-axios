@@ -10,7 +10,6 @@ function axios (config: AxiosRequestConfig): void {
     config.headers = transformHeaders(config);
     config.data = transformRequestData(config);
     xhr(config)
-    console.log(config, 'config')
 }
 
 function transformURL (config: AxiosRequestConfig): string {
