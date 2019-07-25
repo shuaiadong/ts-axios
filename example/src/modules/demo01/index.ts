@@ -2,7 +2,7 @@ import axios from '../../../../src/index';
 const context = 'demo01'
 axios({
     method: 'get',
-    url: `/${context}/get`
+    url: `/${context}/get#/1111?a=1`
 })
 
 axios({
