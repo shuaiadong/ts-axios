@@ -5,3 +5,12 @@ export function transformRequset (data: any ): any {
     }
     return data
 }
+
+export function transformResponse (data: string): any {
+    if(typeof data === 'string') {
+        try {
+            data = JSON.parse(data);
+        } catch { /**  */}
+    }
+    return data;
+}
