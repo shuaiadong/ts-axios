@@ -65,7 +65,7 @@ module.exports = {
                 enforce: 'pre',
                 use: [
                     {
-                        loader: 'ts-loader'
+                        loader: 'tslint-loader'
                     }
                 ]
             },
@@ -79,7 +79,7 @@ module.exports = {
                     }
                   }
                 ]
-              }
+            }
         ]
     },
 }
