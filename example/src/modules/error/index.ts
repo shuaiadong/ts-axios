@@ -1,4 +1,4 @@
-import axios from '../../../../src/index';
+import axios, {AxiosError} from '../../../../src/index';
 const context = 'error'
 
 
@@ -14,8 +14,8 @@ axios({
     url: `/${context}/timeout`,
     method: 'get',
     timeout: 1000,
-}).catch((e)=> {
-    console.log(e)
+}).catch((e:AxiosError)=> {
+    console.log(e.code)
         
 })
 // 错误
