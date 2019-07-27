@@ -37,3 +37,8 @@
  - options
  - head
  - patch
+
+ ### 第二周
+ - 扩展调用方式
+ - axios.get(url, [config])
+ - axios.post(url, [data[,config]])
