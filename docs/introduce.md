@@ -15,7 +15,6 @@
     - hot plugin 与 optput的chunkhash conenthash 不能同时使用
     - 热更细 moduel.hot typesript 报错 安装 @types/webpack-env
     - 报错 `TS7006: Parameter 'b' implicitly has an 'any' type.`
-        - webpack transpileOnly 改为 false
         - 原来缺少插件 
         ```
             "tslint": "^5.18.0",
@@ -23,6 +22,13 @@
             "tslint-config-standard": "^8.0.1",
 
         ```
+    - error ✅
+     ```js
+        错误 Uncaught (in promise) 没有捕获promise的返回值
+        new Error 一定要 return
+        var err = function (message) {new Error(message)} // 不会抛出异常
+        var error = function (message) {return new Error(message)}
+     ```
 - demo01
  - get
  - post

@@ -14,6 +14,9 @@ axios({
     url: `/${context}/timeout`,
     method: 'get',
     timeout: 1000,
+}).catch((e)=> {
+    console.log(e)
+        
 })
 // 错误
 setTimeout(() => {
@@ -21,7 +24,9 @@ setTimeout(() => {
         url: `/${context}/timeout`,
         method: 'get',
         timeout: 4000,
-    });
+    }).catch(()=> {
+        
+    })
 
 }, 3000)
 
