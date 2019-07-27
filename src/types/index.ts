@@ -29,3 +29,11 @@ export interface AxiosResponse {
 export interface AxiosPramise extends Promise<AxiosResponse> {
 
 }
+export interface AxiosError {
+    message: string
+    config: AxiosRequestConfig
+    code: string | null
+    request?: any
+    response?: AxiosResponse
+
+}

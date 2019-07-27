@@ -1,6 +1,8 @@
 import { AxiosRequestConfig, AxiosPramise, AxiosResponse} from "./types";
 import {parseHeaders} from './helpers/headers'
 
+import createError from './helpers/error'
+
 function xhr(config: AxiosRequestConfig): AxiosPramise {
     const {url, method = 'get', data = null, headers, responseType, timeout} = config;
   
@@ -13,7 +15,13 @@ function xhr(config: AxiosRequestConfig): AxiosPramise {
                 resolve(response)
             }
             else {
-                reject(new Error(`Request failed with status code  ${request.status}错误`))
+                reject(createError(
+                    `Request failed with status code  ${request.status}错误`,
+                    config,
+                    null,
+                    request,
+                    response
+                    ))
             }
         }
 
@@ -38,11 +46,21 @@ function xhr(config: AxiosRequestConfig): AxiosPramise {
         }
 
         request.onerror = function () {
-            reject(new Error('Network Error'))
+            reject(createError(
+                'Network Error',
+                config,
+                null,
+                request,
+                ))
         }
 
         request.ontimeout = function () {
-            reject(new Error(' timeout'))
+            reject(createError(
+                `Timeout of ${timeout} ms exceeded`,
+                config,
+                'ECONNABORTED',
+                request
+            ,))
         }
 
         request.open(method.toUpperCase(), url, true)
