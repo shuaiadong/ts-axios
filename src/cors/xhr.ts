@@ -1,7 +1,7 @@
-import { AxiosRequestConfig, AxiosPramise, AxiosResponse} from "./types";
-import {parseHeaders} from './helpers/headers'
+import { AxiosRequestConfig, AxiosPramise, AxiosResponse} from "../types";
+import {parseHeaders} from '../helpers/headers'
 
-import createError from './helpers/error'
+import createError from '../helpers/error'
 
 function xhr(config: AxiosRequestConfig): AxiosPramise {
     const {url, method = 'get', data = null, headers, responseType, timeout} = config;
@@ -63,7 +63,7 @@ function xhr(config: AxiosRequestConfig): AxiosPramise {
             ,))
         }
 
-        request.open(method.toUpperCase(), url, true)
+        request.open(method.toUpperCase(), url!, true)
     
         if (responseType) {
             request.responseType = responseType

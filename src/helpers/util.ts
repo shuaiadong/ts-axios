@@ -17,3 +17,10 @@ export function isPlainObject(val: any): val is Object {
 export function isUndefined(val: any): val is undefined {
     return typeof val === 'undefined'
 }
+
+export function extend<T, U> (to: T , from: U):  T & U {
+        for (const key in from) {
+            ;(to as T & U)[key] = from[key] as any
+        }
+        return to as T & U
+}

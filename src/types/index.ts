@@ -38,7 +38,7 @@ export interface AxiosError {
 
 }
 
-export interface axios {
+export interface Axios {
     request(config: AxiosRequestConfig): AxiosPramise
     get(url: string, config: AxiosRequestConfig): AxiosPramise
     delete(url: string, config: AxiosRequestConfig): AxiosPramise
@@ -50,6 +50,7 @@ export interface axios {
     put(url: string, data?: any, cofing?: AxiosRequestConfig): AxiosPramise
 }
 // 混合对象类型（既有对象类型）
-export interface AxiosInterface extends axios {
+export interface AxiosInstance extends Axios {
     (config: AxiosRequestConfig): AxiosPramise
+    (url: string, config: AxiosRequestConfig): AxiosPramise
 }
