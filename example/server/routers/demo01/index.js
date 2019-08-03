@@ -24,6 +24,15 @@ router.post('/post', function(req, res) {
         query: req.query
     })
   })
+
+
+  router.post('/post/user', function(req, res) {
+    res.json({
+        message: 'req.body',
+        number: 200,
+        data: [1,2,3]
+    })
+  })
 router.put('/put', (req, res) => {
     res.json(req.query)
 })

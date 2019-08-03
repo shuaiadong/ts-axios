@@ -33,3 +33,9 @@ axios({
     url: `/${context}/patch`
 })
 
+axios({
+    method: 'post',
+    url: `/${context}/patch`
+})
+
+

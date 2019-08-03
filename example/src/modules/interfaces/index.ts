@@ -27,3 +27,26 @@ axios.patch(`${context}/patch`, {
 axios.put(`${context}/put`, {
     post: 'post'
 })
+
+
+interface ResultData<T> {
+    code: number
+    message: string
+    result: T
+}
+
+interface User {
+    name: string
+    age: number
+}
+
+function getUser<T>() {
+    return axios.post<ResultData<T>>(`${context}/post/user`)
+    .then(res => res.data)
+}
+
+async function test() {
+    const test = await getUser<User>();
+    console.log(test.message)
+}
+test()
