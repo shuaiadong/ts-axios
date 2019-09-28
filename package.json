@@ -5,13 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "commit": "git-cz"
+    "commit": "npx git-cz"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shuaiadong/ts-axios.git"
+    "url": "githttps://github.com/shuaiadong/ts-axios.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -19,6 +18,14 @@
   },
   "homepage": "https://github.com/shuaiadong/ts-axios#readme",
   "devDependencies": {
-    "commitizen": "^4.0.3"
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-angular": "^8.2.0",
+    "commitizen": "^4.0.3",
+    "husky": "^3.0.7"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
